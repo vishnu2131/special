@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propose</title>
+    <meta
+      name="description"
+      content="You are the only one who understands me even more than myself. I want you to be with me always. I LOVE YOU!"
+    />
+    <meta
+      property="og:image"
+      content="https://static.toiimg.com/thumb/msid-74004000,imgsize-511880,width-400,resizemode-4/74004000.jpg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+    />
+
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://github.com/images/modules/search/mona-love.png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: linear-gradient(
+          117deg,
+          #ff41f7 0%,
+          rgba(255, 73, 73, 0.81) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      h1 {
+        text-align: center;
+        color: white;
+        font-size: 72px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .btn {
+        color: gray;
+        background-color: white;
+        border: none;
+        border-radius: 50px;
+        width: 200px;
+        height: 50px;
+        margin: 10px;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .btn:hover {
+        background-color: #ff4690;
+        border: 2px solid white;
+        transform: scale(1.1);
+      }
+      @media (max-width: 1148px) {
+        h1 {
+          font-size: 50px;
+        }
+        .btn {
+          width: 150px;
+          height: 40px;
+        }
+      }
+      @media (max-width: 795px) {
+        h1 {
+          font-size: 40px;
+        }
+      }
+      #showMessage,
+      #showSadMessage {
+        display: none;
+      }
+      #showMessage h1,
+      #showSadMessage h1 {
+        font-size: 50px;
+      }
+      .name-highlight {
+        font-family: "Dancing Script", cursive; /* Stylish font */
+        font-size: 3em; /* Adjust size as needed */
+
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Adds a soft shadow */
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .ml6 {
+        position: relative;
+      }
+      .ml6 .text-wrapper {
+        position: relative;
+        display: inline-block;
+        padding-top: 0.2em;
+        padding-right: 0.05em;
+        padding-bottom: 0.1em;
+        overflow: hidden;
+      }
+      .ml6 .letter {
+        display: inline-block;
+        line-height: 1em;
+      }
+      .fireworks {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .firework {
+        position: absolute;
+        background: url("https://cdn-icons-png.flaticon.com/512/2933/2933004.png")
+          no-repeat center;
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        animation: explode 1s ease-in-out;
+      }
+      @keyframes explode {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(3);
+        }
+      }
+      .balloon {
+        position: absolute;
+        background: url("https://cdn-icons-png.flaticon.com/512/2948/2948444.png")
+          no-repeat center;
+        background-size: cover;
+        width: 80px;
+        height: 120px;
+        animation: floatBalloon 10s ease-in-out infinite;
+      }
+      @keyframes floatBalloon {
+        0% {
+          transform: translateY(100vh);
+        }
+        100% {
+          transform: translateY(-150px);
+        }
+      }
+      .love-symbol {
+        position: absolute;
+        font-size: 3em;
+        color: #ff6b81;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+      }
+      .sad-face {
+        font-size: 5em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .sad-animation {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+      }
+      footer {
+        color: #fff;
+      }
+      footer a {
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parentElement" class="text-center">
+      <div class="d-flex justify-content-center">
+        <lottie-player
+          src="https://assets10.lottiefiles.com/private_files/lf30_mywfoph1.json"
+          background="transparent"
+          speed="1"
+          style="width: 300px; height: 300px"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+      <h1 class="name-highlight">Likhi, Will You Be Mine? 🥰</h1>
+
+      <div class="d-flex justify-content-center">
+        <button onclick="propose('yes')" class="btn btn-primary">Yes!</button>
+        <button onclick="propose('no')" class="btn btn-primary">
+          Of Course, Yes!
+        </button>
+      </div>
+    </div>
+    <div
+      id="showMessage"
+      class="position-absolute top-50 start-50 translate-middle"
+    >
+      <lottie-player
+        src="https://assets1.lottiefiles.com/packages/lf20_utsfwa3k.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay
+      ></lottie-player>
+      <h1 class="ml6">
+        <span class="text-wrapper">
+          <span class="letters">I Love you Too!</span>
+        </span>
+      </h1>
+    </div>
+    <div
+      id="showSadMessage"
+      class="position-absolute top-50 start-50 translate-middle"
+    >
+      <lottie-player
+        src="https://assets10.lottiefiles.com/private_files/lf30_sadface.json"
+        background="transparent"
+        speed="1"
+        style="width: 300px; height: 300px"
+        loop
+        autoplay
+        class="sad-animation"
+      ></lottie-player>
+      <h1 class="sad-face">😢</h1>
+      <h2>Even though you said no, my heart will always be with you. 💔</h2>
+    </div>
+    <div id="balloonsContainer"></div>
+    <div id="loveSymbolsContainer"></div>
+    <div id="fireworksContainer"></div>
+    <div id="sadFaceContainer"></div>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+      const parentElement = document.getElementById("parentElement");
+      const showMessage = document.getElementById("showMessage");
+      const showSadMessage = document.getElementById("showSadMessage");
+      const balloonsContainer = document.getElementById("balloonsContainer");
+      const loveSymbolsContainer = document.getElementById(
+        "loveSymbolsContainer"
+      );
+      const fireworksContainer = document.getElementById("fireworksContainer");
+      const sadFaceContainer = document.getElementById("sadFaceContainer");
+
+      const propose = (response) => {
+        parentElement.style.display = "none";
+        showMessage.style.display = "none";
+        showSadMessage.style.display = "none";
+        document.body.style.background =
+          response === "yes"
+            ? "linear-gradient(116.82deg, #ff94e7 0%, #27cbff 100%)"
+            : "linear-gradient(117deg, #7f8c8d 0%, #2c3e50 100%)";
+
+        if (response === "yes") {
+          showFireworks();
+          showBalloons();
+          showLoveSymbols();
+          showMessage.style.display = "block";
+          notifyUser("She said Yes! 🎉");
+        } else if (response === "no") {
+          showSadFace();
+          showSadMessage.style.display = "block";
+          notifyUser("She said No. 😢");
+        }
+      };
+
+      const showFireworks = () => {
+        for (let i = 0; i < 10; i++) {
+          const firework = document.createElement("div");
+          firework.classList.add("firework");
+          firework.style.left = `${Math.random() * 100}vw`;
+          firework.style.top = `${Math.random() * 100}vh`;
+          firework.style.animationDelay = `${Math.random() * 2}s`;
+          fireworksContainer.appendChild(firework);
+        }
+      };
+
+      const showBalloons = () => {
+        for (let i = 0; i < 5; i++) {
+          const balloon = document.createElement("div");
+          balloon.classList.add("balloon");
+          balloon.style.left = `${Math.random() * 100}vw`;
+          balloon.style.bottom = `${Math.random() * 100}vh`;
+          balloonsContainer.appendChild(balloon);
+        }
+      };
+
+      const showLoveSymbols = () => {
+        for (let i = 0; i < 10; i++) {
+          const loveSymbol = document.createElement("div");
+          loveSymbol.classList.add("love-symbol");
+          loveSymbol.innerHTML = "❤️";
+          loveSymbol.style.left = `${Math.random() * 100}vw`;
+          loveSymbol.style.top = `${Math.random() * 100}vh`;
+          loveSymbolsContainer.appendChild(loveSymbol);
+        }
+      };
+
+      const showSadFace = () => {
+        const sadFace = document.createElement("div");
+        sadFace.classList.add("sad-face");
+        sadFace.innerHTML = "😢";
+        sadFaceContainer.appendChild(sadFace);
+      };
+
+      const notifyUser = (message) => {
+        if (Notification.permission === "granted") {
+          new Notification(message);
+        } else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then((permission) => {
+            if (permission === "granted") {
+              new Notification(message);
+            }
+          });
+        }
+      };
+
+      // Animate Text with Anime.js
+      var textWrapper = document.querySelector(".ml6 .letters");
+      textWrapper.innerHTML = textWrapper.textContent.replace(
+        /\S/g,
+        "<span class='letter'>$&</span>"
+      );
+
+      anime
+        .timeline({ loop: true })
+        .add({
+          targets: ".ml6 .letter",
+          translateY: ["1.1em", 0],
+          translateZ: 0,
+          duration: 750,
+          delay: (el, i) => 50 * i,
+        })
+        .add({
+          targets: ".ml6",
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000,
+        });
+
+      // Request notification permission on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        if (Notification.permission === "default") {
+          Notification.requestPermission();
+        }
+      });
+    </script>
+  </body>
+</html>
